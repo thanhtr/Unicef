@@ -1,0 +1,15 @@
+<a href="<?php echo $this->baseUrl('/admin/template-types/edit') ?>">New</a>
+<ul>
+<?php
+foreach ($this->templateTypes as $templateType): ?>
+    <li>
+        <?php echo $templateType->getName(); ?>
+        <a href="<?php
+        echo $this->baseUrl(
+            '/admin/template-types/edit?id=' . $templateType->getId()
+        ); ?>">Edit</a>
+    </li>
+
+<?php
+endforeach; ?>
+</ul>

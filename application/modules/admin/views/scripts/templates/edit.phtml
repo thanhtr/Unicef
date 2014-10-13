@@ -1,0 +1,16 @@
+<a href="<?php echo $this->baseUrl('/admin/templates') ?>">All templates</a>
+
+<?php
+$template = $this->template;
+if ($template):
+$thumbnails = $template->getThumbnails();
+$thumbnailUrl = $thumbnails[Aino\Model\Image::THUMBNAIL_LARGE];
+?>
+<h1><?php echo $template->getName(); ?></h1>
+<img src="<?php echo $thumbnailUrl; ?>" />
+<?php
+endif; ?>
+
+<?php
+echo $this->form; ?>
+

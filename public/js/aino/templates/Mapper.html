@@ -1,0 +1,104 @@
+<div class="dijitReset ainoCustomize" >
+    <select name="groups"
+            data-dojo-attach-event="onchange:_updateAssets"
+            data-dojo-attach-point="filterSelectNode">
+        <option></option>
+    </select>
+    <div data-dojo-type="aino/PreviewList"
+         data-dojo-props="name:'template', itemValueProp:'url', href:'${href}'"
+         data-dojo-attach-event="onChange:_updateMapperUrl"
+         data-dojo-attach-point="sourceImageSelector"></div>
+    <div data-dojo-attach-point="contentFieldNode">
+        <ul class="ainoCustomizeCmdButtons">
+            <li>
+                <select data-dojo-attach-point="componentNameNode"
+                        data-dojo-attach-event="onchange: _changeComponentName">
+                    <option value="relation">Relation</option>
+                    <option value="screen" selected="selected">Screen</option>
+                </select>
+            </li>
+            <li>
+                <select multiple="multiple"
+                        data-dojo-attach-point="groupSelectNode"></select>
+            </li>
+            <li>
+                <button
+                    data-dojo-attach-event="onclick:_saveMaskDistortion">Save</button>
+            </li>
+        </ul>
+        <div data-dojo-attach-point="svgContainer">
+            <svg version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="1200px"
+                height="1200px"
+                xml:space="preserve"
+                data-dojo-attach-point="svgWidget"
+                data-dojo-type="luxus.svg.Svg">
+
+                <image id="sourceImage"
+                       preserveAspectRatio="xMinYMin meet"
+                       data-dojo-type="luxus/svg/Image"
+                       data-dojo-props="resizeOnload:1"
+                       data-dojo-attach-point="sourceImageNode"
+                       xlink:href=""
+                       width="1200"
+                       height="1200"
+                       x="0"
+                       y="0">
+                </image>
+                <polygon
+                    data-dojo-type="luxus/svg/Polygon"
+                    data-dojo-attach-point="maskNode"
+                    data-dojo-props="
+                        fireRecursiveEvents: false,
+                        movable:1,
+                        linkMovementTo:'.cornerPoint'"
+                    points="20,20 120,20 120,120 20,120"
+                    style="fill:#44a51c;fill-opacity:0;stroke:#44a51c;stroke-width:1"></polygon>
+                <rect id="ltCorner"
+                    class="cornerPoint"
+                    style="fill:black;fill-opacity:0;stroke:#44a51c;stroke-width:1"
+                    width="20"
+                    height="20"
+                    x="10"
+                    y="10"
+                    data-dojo-type="luxus/svg/Rect"
+                    data-dojo-props="movable:1"
+                    data-dojo-attach-event="moveEnd:_updateMask"></rect>
+                <rect id="rtCorner"
+                    class="cornerPoint"
+                    style="fill:black;fill-opacity:0;stroke:#44a51c;stroke-width:1"
+                    width="20"
+                    height="20"
+                    x="110"
+                    y="10"
+                    data-dojo-type="luxus/svg/Rect"
+                    data-dojo-props="movable:1"
+                    data-dojo-attach-event="moveEnd:_updateMask"></rect>
+                <rect id="rbCorner"
+                    class="cornerPoint"
+                    style="fill:black;fill-opacity:0;stroke:#44a51c;stroke-width:1"
+                    width="20"
+                    height="20"
+                    x="110"
+                    y="110"
+                    data-dojo-type="luxus/svg/Rect"
+                    data-dojo-props="movable:1"
+                    data-dojo-attach-event="moveEnd:_updateMask"></rect>
+                <rect id="lbCorner"
+                    class="cornerPoint"
+                    style="fill:black;fill-opacity:0;stroke:#44a51c;stroke-width:1"
+                    width="20"
+                    height="20"
+                    x="10"
+                    y="110"
+                    data-dojo-type="luxus/svg/Rect"
+                    data-dojo-props="movable:1"
+                    data-dojo-attach-event="moveEnd:_updateMask"></rect>
+            </svg>
+        </div>
+    </div>
+</div>

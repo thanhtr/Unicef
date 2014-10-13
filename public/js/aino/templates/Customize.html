@@ -1,0 +1,59 @@
+<div class="dijitReset ainoCustomize" >
+    <form method="GET"
+          action="#"
+          enctype="application/x-www-form-urlencoded"
+          data-dojo-attach-point="valuesForm">
+
+        <div class="tab-container"
+             data-dojo-attach-point="tabContainer">
+            <ul class="tab-handles"
+                data-dojo-attach-point="tabHandles">
+                <li class="tab-active">
+                    <a href="#tab-templates"
+                       data-dojo-attach-event="onclick:_selectTab">Templates</a>
+                </li>
+            </ul>
+            <div class="tab-templates tab-content tab-open"
+                data-dojo-type="aino.PreviewList"
+                data-dojo-props="itemValueProp:'name', href:'${href}'"
+                data-dojo-attach-event="onChange:_updateParameters"
+                data-dojo-attach-point="templateSelector"></div>
+        </div>
+
+        <div data-dojo-attach-point="hiddenFieldsNode"></div>
+    </form>
+
+    <div data-dojo-attach-point="contentFieldNode" class="aino-hidden">
+        <ul class="aino-customize-cmd-buttons">
+            <li class="dropdown-links">
+                <span>Download as</span>
+                <ul>
+                    <li class="aino-hidden">
+                        <a href="#"
+                        target="_blank"
+                        data-dojo-attach-point="pngDownloadLinkNode">png</a>
+                    </li>
+                    <li class="aino-hidden">
+                        <a href="#"
+                        target="_blank"
+                        data-dojo-attach-point="jpgDownloadLinkNode">jpg</a>
+                    </li>
+                    <li class="aino-hidden">
+                        <a href="#"
+                        target="_blank"
+                        data-dojo-attach-point="pdfDownloadLinkNode">pdf</a>
+                    </li>
+                    <li class="aino-hidden">
+                        <a href="#"
+                        target="_blank"
+                        data-dojo-attach-point="svgDownloadLinkNode">svg</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div data-dojo-attach-point="previewContainer"
+             class="aino-preview-container">
+            <div class="loading-overlay">Loading...</div>
+        </div>
+    </div>
+</div>

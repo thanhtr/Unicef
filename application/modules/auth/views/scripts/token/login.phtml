@@ -1,0 +1,43 @@
+<?php
+
+$this->requireModule('dijit/form/Form')
+     ->requireModule('dijit/form/ValidationTextBox')
+     ->requireModule('dijit/form/Button');
+
+$class = '';
+if ($this->messageClass == Auth_Model_UiText::TOKEN_SENT) {
+    $class = 'success';
+} else if ($this->messageClass == Auth_Model_UiText::ACCESS_DENIED) {
+    $class = 'error';
+}
+?>
+
+<!-- View start -->
+        <?php
+        if ($this->form) {
+            $this->form->setAction($this->baseUrl('/auth/token/login'));
+            echo $this->form;
+            if ($this->form->isErrors()): ?>
+            <div  class="notification error">
+                <h1>There’s a problem with the login</h1>
+                <ul>
+                    <li>
+                    <?php
+                    foreach ($this->form->getMessages() as $message): ?>
+                    <?php echo implode("</li>\n<li>", $message); ?>
+                    <?php
+                    endforeach; ?>
+                    </li>
+                </ul>
+            </div>
+            <?php
+            endif;
+        }
+
+        if ($this->message): ?>
+        <div class="notification <?php echo $class; ?>">
+            <?php echo $this->message; ?>
+        </div>
+        <?php
+        endif; ?>
+<!-- View end -->

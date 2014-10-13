@@ -1,0 +1,7 @@
+<?php
+    $this
+        ->requireModule('aino/Mapper'); ?>
+<div data-dojo-type="aino/Mapper"
+     data-dojo-props="baseUrl:'<?php
+        echo $this->baseUrl('/'); ?>',href:'<?php
+        echo $this->baseUrl('/api/assets?groups=' . $this->group); ?>'"></div>

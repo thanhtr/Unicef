@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php echo $this->headMeta(); ?>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="shortcut icon" href="<?php
+            echo $this->baseUrl('/favicon.ico'); ?>" />
+
+        <title>UNICEF - image generator</title>
+
+        <?php
+        echo $this->headLink()
+            ->appendStylesheet(
+                $this->baseUrl('/css/global.css'),
+                'screen'
+            )
+            ->appendStylesheet(
+                $this->baseUrl('/js/luxus/themes/nokia/nokia.css'),
+                'screen'
+            );
+        ?>
+
+        <script src="<?php echo $this->baseUrl('/js/dojo/dojo.js'); ?>"
+                data-dojo-config="async: true, parseOnLoad: true, cacheBust:'v2'"></script>
+
+        <?php echo $this->headScript()->prependScript("'use strict';\n"); ?>
+
+        <?php echo $this->requireModule('dojo/parser'); ?>
+
+    </head>
+    <body class="login nokia">
+        <header>
+            <h1>Materiaaligeneraattori</h1>
+            <span class="logo">&nbsp;</span>
+        </header>
+        <div class="content-wrapper">
+            <?php echo $this->layout()->content; ?>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+<?php
+
+if ($this->data) {
+    $this->data->setDpi(300);
+    echo $this->data->convert(Aino\Model\Image::FORMAT_PDF);
+}

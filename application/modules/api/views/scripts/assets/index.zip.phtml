@@ -1,0 +1,20 @@
+<?php
+$tempName = '/tmp/' . uniqid('', true) . '.zip';
+$zip = new ZipArchive();
+
+if ($zip->open($tempName, ZIPARCHIVE::CREATE) !== true) {
+    throw new Zend_Exception('Unable to create archive.');
+}
+
+
+foreach ($this->data as $asset) {
+    $zip->addFile(
+        $asset->getPath(true),
+        $asset->getName()
+    );
+}
+
+$zip->close();
+
+readfile($tempName);
+unlink($tempName);

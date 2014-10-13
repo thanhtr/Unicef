@@ -1,0 +1,15 @@
+<div class="filtering-list">
+    <form action="#"
+          method="GET"
+          data-dojo-attach-point="filterForm">
+        <select
+            name="${filterPropertyName}"
+            multiple="multiple"
+            data-dojo-attach-point="propertySelector"
+            data-dojo-attach-event="onchange:_upladeList">
+        </select>
+    </form>
+    <form action="${forwardUrl}"
+          method="GET"
+          data-dojo-attach-point="itemSelectionForm"></form>
+</div>

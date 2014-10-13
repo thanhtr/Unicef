@@ -1,0 +1,10 @@
+<?php $this->requireModule('aino/FilteringList'); ?>
+
+<a href="<?php echo $this->baseUrl('/admin/assets/edit') ?>">Upload New</a>
+<div data-dojo-type="aino.FilteringList"
+     data-dojo-props="
+        href:'<?php echo $this->baseUrl('/api/assets'); ?>',
+        filterPropertiesUrl:'<?php echo $this->baseUrl('/api/asset-groups'); ?>',
+        'filterPropertyName':'groups',
+        'itemIdPropName':'id',
+        'forwardUrl':'<?php echo $this->baseUrl('/admin/assets/edit'); ?>'"></div>

@@ -1,0 +1,238 @@
+<div class="unicef customize">
+    <div class="tab-container"
+            data-dojo-attach-point="tabContainer">
+        <ul class="tab-handles"
+            data-dojo-attach-point="tabHandles">
+            <li class="tab-active">
+                <a href="#tab-e-kortti"
+                    data-dojo-attach-event="onclick:_selectTab">E-kortti</a>
+            </li>
+            <li>
+                <a href="#tab-banneri"
+                    data-dojo-attach-event="onclick:_selectTab">Banneri</a>
+            </li>
+            <li style="display: none;">
+                <a href="#tab-juliste"
+                    data-dojo-attach-event="onclick:_selectTab">Juliste</a>
+            </li>
+        </ul>
+        <div class="tab-e-kortti tab-content tab-open">
+            <div class="options">
+                <form action="${baseUrl}/api/templates/1"
+                    method="GET"
+                    data-dojo-attach-point="eCardForm"
+                    data-preview="eCard">
+                    <input name="format" type="hidden" value="jpg" />
+                    <input name="parameters[backgroundImage]" type="hidden" value="1" />
+                    <input name="parameters[logoImage]" type="hidden" value="" />
+                    <div class="option-content">
+                        <h2><span class="number-bullet">1.</span>Valitse kuva</h2>
+                        <ul class="img-thumbs">
+                            <li class="selected" id="thumb-image-1">
+                                <a href="#parameters[backgroundImage]:1">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_sininen.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                            <li id="thumb-image-2">
+                                <a href="#parameters[backgroundImage]:2">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_punainen.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                            <li id="thumb-image-3">
+                                <a href="#parameters[backgroundImage]:3">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_lapsi.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="option-content">
+                        <h2><span class="number-bullet">2.</span>Valitse kieli</h2>
+                        <label>
+                            <input checked="checked" type="radio" name="parameters[language]" value="fi"> Suomi
+                        </label>
+                        <label>
+                            <input type="radio" name="parameters[language]" value="se"> Ruotsi
+                        </label>
+                        <label>
+                            <input type="radio" name="parameters[language]" value="en"> Englanti
+                        </label>
+                    </div>
+                    <div class="option-content">
+                        <h2><span class="number-bullet">3.</span>Oma tervehdys</h2>
+                        <textarea name="parameters[greeting]" cols="20" rows="3"></textarea>
+                    </div>
+                    <div class="option-content">
+                        <h2><span class="number-bullet">4.</span>Oma nimi ja yrityksen nimi</h2>
+                        <input type="text" name="parameters[name]" value="" />
+                    </div>
+                </form>
+                <div class="option-content">
+                    <h2><span class="number-bullet">5.</span>Syötä logo</h2>
+                    <div class="file-info">
+                        <p data-dojo-attach-point="uploadedFilename"></p>
+                    </div>
+                    <div class="logo-upload">
+                        <form
+                            action="${ugcUrl}"
+                            method="POST"
+                            enctype="multipart/form-data"
+                            data-dojo-attach-point="uploadFormNode">
+                            <input
+                                type="file"
+                                name="file"
+                                data-dojo-attach-event="onchange:_uploadFile" />
+                        </form>
+                        <p>Logon tulee olla jpg- tai png-formaatissa ja riittävän kokoinen laadun varmistamiseksi (väh yli 200 px).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="preview">
+                <img
+                    width="550"
+                    data-dojo-attach-point="eCardPreview"
+                    src="${baseUrl}/api/templates/1?format=jpg">
+            </div>
+            <div class="tab-footer">
+                <a class="upload-link"
+                href="#"
+                target="_blank"
+                data-dojo-attach-point="eCardDownload"
+                data-dojo-attach-event="onclick:_eCardDownloaded">Lataa Kortti</a>
+                <p class="contact-info">e-kortti latautuu omalle koneellesi.
+                    Jos e-kortin tekeminen
+                    keskeytyy, aloita sen tekeminen uudelleen.
+                    Mikäli teillä on kysyttävää, ottakaa yhteyttä
+                    <a href="mailto:yritykset@unicef.fi">yritykset@unicef.fi</a>.
+                </p>
+            </div>
+        </div>
+        <div class="tab-banneri tab-content">
+            <div class="options">
+                <div class="option-content">
+                    <h2><span class="number-bullet">1.</span>Valitse koko</h2>
+                    <label>
+                        <input checked="checked"
+                               type="radio"
+                               name="size"
+                               value="${baseUrl}/api/templates/3"
+                               data-dojo-attach-event="onclick:_chageSize"> 140x350px
+                    </label>
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="${baseUrl}/api/templates/2"
+                               data-dojo-attach-event="onclick:_chageSize">468x60px
+                    </label>
+                </div>
+                <form action="${baseUrl}/api/templates/3"
+                    method="GET"
+                    data-dojo-attach-point="bannerForm"
+                    data-preview="banner">
+                    <input name="format" type="hidden" value="png" />
+                    <input name="parameters[backgroundImage]" type="hidden" value="5" />
+                    <div class="option-content">
+                        <h2><span class="number-bullet">1.</span>Valitse kuva</h2>
+                        <ul class="img-thumbs">
+                            <li class="selected" id="thumb-image-1">
+                                <a href="#parameters[backgroundImage]:5">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_sininen.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                            <li id="thumb-image-2">
+                                <a href="#parameters[backgroundImage]:6">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_punainen.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                            <li id="thumb-image-3">
+                                <a href="#parameters[backgroundImage]:7">
+                                    <img
+                                        src="${baseUrl}/images/thumbs/thumb_50x50_lapsi.png"
+                                        alt=""
+                                        width="50"
+                                        height="50">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="option-content">
+                        <h2><span class="number-bullet">2.</span>Valitse kieli</h2>
+                        <label>
+                            <input checked="checked" type="radio" name="parameters[language]" value="fi"> Suomi
+                        </label>
+                        <label>
+                            <input type="radio" name="parameters[language]" value="se"> Ruotsi
+                        </label>
+                        <label>
+                            <input type="radio" name="parameters[language]" value="en"> Englanti
+                        </label>
+                    </div>
+                    <div class="option-content">
+                        <h2><span class="number-bullet">4.</span>Yrityksen nimi</h2>
+                        <input type="text" name="parameters[name]" value="X" />
+                    </div>
+                </form>
+            </div>
+            <div class="preview">
+                <img
+                    data-dojo-attach-point="bannerPreview"
+                    data-dojo-attach-event="onload:_previewLoad"
+                    src="${baseUrl}/api/templates/2?format=jpg">
+            </div>
+            <div class="tab-footer">
+                <a class="upload-link"
+                href="#"
+                target="_blank"
+                data-dojo-attach-point="bannerDownload"
+                data-dojo-attach-event="onclick:_bannerDownloaded">Lataa banneri</a>
+                <p class="contact-info">Banneri latautuu omalle koneellesi.
+                    Jos bannerin tekeminen keskeytyy, aloita sen tekeminen 
+                    uudelleen. Mikäli teillä on kysyttävää, ottakaa yhteyttä
+                    <a href="mailto:yritykset@unicef.fi">yritykset@unicef.fi</a>.
+                </p>
+            </div>
+        </div>
+        <div class="tab-juliste tab-content">
+            <div class="poster-wrapper">
+                <img width="500" height="706" src="${baseUrl}/images/Unicef_Juliste.jpg" />
+                <p class="poster-info">
+                    Kampanjajulisteen voit tulostaa
+                    maksimissaan A3 kokoisena
+                </p>
+            </div>
+            <div class="tab-footer">
+                <a class="upload-link"
+                   href="${baseUrl}/Unicef_Juliste.pdf"
+                   target="_blank"
+                   data-dojo-attach-event="onclick:_posterDownloaded">
+                    Lataa juliste
+                </a>
+                <p class="contact-info">Banneri/e-kortti latautuu omalle koneellesi.
+                    Jos bannerin/e-kortin tekeminen
+                    keskeytyy, aloita sen tekeminen uudelleen.
+                    Mikäli teillä on kysyttävää, ottakaa yhteyttä
+                    <a href="mailto:yritykset@unicef.fi">yritykset@unicef.fi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unicef raportointi</title>
+        <link rel="stylesheet" type="text/css" href="http://nicolas.kruchten.com/pivottable/examples/pivot.css">
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://nicolas.kruchten.com/pivottable/examples/pivot.js"></script>
+        <script type="text/javascript" src="http://nicolas.kruchten.com/pivottable/examples/gchart_renderers.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    </head>
+    <style>
+        * {font-family: Arial;}
+    </style>
+    <body>
+        <h1>Unicef raportointi</h1>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart", "charteditor"]});
+            $(function(){
+
+                var derivers = $.pivotUtilities.derivers;
+                var renderers = $.extend($.pivotUtilities.renderers, 
+                    $.pivotUtilities.gchart_renderers);
+
+                $.getJSON("reporting.php?f=json", function(mps) {
+                    $("#output").pivotUI(mps, {
+                        renderers: renderers,
+                        derivedAttributes: {
+                          vuosi: derivers.dateFormat('timestamp', '%y'),
+                          kuukausi: derivers.dateFormat('timestamp', '%m'),
+                          vuosi_kuukausi: derivers.dateFormat('timestamp', '%y-%m'),
+                          kampanja: function(mp) {
+                            return mp.template_id >= 5 ? 'filippiinit' : 'joulu 2013';
+                          },
+                          tyyppi: function(mp) {
+                            return ['5','6','7','79'].indexOf(mp.backgroundImage) == -1 ? 'kortti' : 'banneri';
+                          },
+                          malli: function(mp) {
+                            return {'3':'tytot', '1':'sininen lahja', '2':'punainen lahja', '5':'sininen lahja', '6': 'punainen lahja', '7':'tytot', '81':'tytot', '79':'tytot'}[mp.backgroundImage] || mp.backgroundImage;
+                          },
+                          koko: function(mp) {
+                            if (['3', '6'].indexOf(mp.template_id) !== -1) return '140x350';
+                            else if (['2', '7'].indexOf(mp.template_id) !== -1) return '468x60';
+                            else return 'kortti';
+                          }
+                        },
+                        rows: ["kampanja"],
+                        cols: ["tyyppi"],
+                        hiddenAttributes: ['timestamp', 'greeting', 'print_log_id', 'template_id', 'user_id', 'parameters', 'logoImage', 'format', 'backgroundImage'],
+                        rendererName: "Bar Chart"
+                    });
+                });
+             });
+        </script>
+
+        <div id="output" style="margin: 30px;"></div>
+
+    </body>
+</html>
+

@@ -1,0 +1,12 @@
+<?php $this->requireModule('aino/Customize');
+$downloadFormats = "['png', 'jpg', 'pdf', 'svg']";
+if (is_array($this->downloadFormats)) {
+    $downloadFormats = "['" . implode($this->downloadFormats, "','") . "']";
+}
+?>
+<div data-dojo-type="aino.Customize"
+     data-dojo-props="
+        baseUrl:'<?php echo $this->baseUrl('/'); ?>',
+        href:'<?php echo $this->baseUrl('/api/templates?types=' . $this->type); ?>',
+        'previewFormat':'svg',
+        'downloadFormats':<?php echo $downloadFormats; ?>"></div>

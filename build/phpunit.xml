@@ -1,0 +1,22 @@
+<phpunit bootstrap="../tests/bootstrap.php"
+         colors="true"
+         stopOnFailure="false">
+  <testsuite name="Aino Test Suite">
+      <directory>../tests/library</directory>
+      <directory>../tests/application</directory>
+  </testsuite>
+  <php>
+  </php>
+    <filter>
+      <whitelist>
+        <directory suffix=".php">../library/</directory>
+        <directory suffix=".php">../application/</directory>
+        <exclude>
+          <file>../application/Bootstrap.php</file>
+          <directory suffix=".phtml">../application/</directory>
+        </exclude>
+      </whitelist>
+  </filter>
+  <logging>
+  </logging>
+</phpunit>

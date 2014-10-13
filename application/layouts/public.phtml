@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php echo $this->headMeta(); ?>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="<?php echo $this->baseUrl('/favicon.ico'); ?>" />
+
+        <title>UNICEF - image generator</title>
+
+        <?php
+        echo $this->headLink()
+            ->appendStylesheet(
+                $this->baseUrl('/css/global.css'),
+                    'screen'
+            )
+        ?>
+
+        <script src="<?php echo $this->baseUrl('/js/dojo/dojo.js'); ?>"
+                data-dojo-config="async: true, parseOnLoad: true, cacheBust:'v2'"></script>
+
+        <?php echo $this->headScript()
+                ->prependScript("'use strict';\n")
+                ->appendFile($this->baseUrl('/js/modernizr.js')); ?>
+
+        <?php echo $this->requireModule('dojo/parser'); ?>
+
+        <?php
+        if (APPLICATION_ENV === 'production'): ?>
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-35576122-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+        <?php
+        endif; ?>
+    </head>
+    <body>
+        <header>
+            <h1>Materiaaligeneraattori</h1>
+            <span class="logo">&nbsp;</span>
+        </header>
+        <div class="content-wrapper">
+            <?php echo $this->layout()->content; ?>
+
+        </div>
+    </body>
+</html>

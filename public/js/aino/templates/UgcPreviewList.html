@@ -1,0 +1,20 @@
+<div class="dijitReset ainoPreviewList">
+    <div class="ugc-preview-upload">
+        <form action=""
+              method="POST"
+              enctype="multipart/form-data"
+              data-dojo-attach-point="uploadFormNode">
+            <input type="file"
+                   name="file"
+                   data-dojo-attach-event="onchange:_uploadFile" />
+        </form>
+    </div>
+    <ul data-dojo-attach-point="listNode"></ul>
+    <input
+        data-dojo-type="dijit/form/TextBox"
+        data-dojo-attach-point="valueNode"
+        data-dojo-attach-event="onChange:onChange"
+        value=""
+        name="${name}"
+        type="hidden" />
+</div>

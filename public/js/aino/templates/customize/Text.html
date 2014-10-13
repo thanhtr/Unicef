@@ -1,0 +1,17 @@
+<div class="dijitReset ainoPreviewList aino-customize-text">
+    <div class="aino-customize-text-options aino-hidden"
+         data-dojo-attach-point="optionsNode">
+        <p>Options</p>
+        <select data-dojo-attach-point="selectNode"
+                data-dojo-attach-event="onchange:_selectValueChanged"></select>
+    </div>
+    <textarea
+        disabled="disabled"
+        data-dojo-attach-point="editorNode"
+        data-dojo-attach-event="onchange:_editorValueChanged"></textarea>
+    <input
+        type="hidden"
+        data-dojo-attach-point="valueNode"
+        name="${name}"
+        value=""/>
+</div>

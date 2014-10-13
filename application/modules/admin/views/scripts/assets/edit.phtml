@@ -1,0 +1,16 @@
+<a href="<?php echo $this->baseUrl('/admin/assets') ?>">All assets</a>
+<a href="<?php echo $this->baseUrl('/admin/assets/edit') ?>">Upload New</a>
+
+<?php
+if ($this->asset):
+    $asset = $this->asset;
+    $thumbnails = $asset->getThumbnails();
+    $thumbnailUrl = $thumbnails[Aino\Model\Image::THUMBNAIL_LARGE];
+    ?>
+<h1><?php echo $asset->getName(); ?></h1>
+<img src="<?php echo $thumbnailUrl; ?>" />
+<?php
+endif; ?>
+
+<?php
+echo $this->form; ?>

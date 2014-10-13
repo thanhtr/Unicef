@@ -1,0 +1,14 @@
+nbproject
+.DS_Store
+*.zargo~
+*.uml~
+*.mwb.bak
+.zfproject.xml
+data/*
+!data/log/exists
+!data/test/
+/data/cache/*
+!/data/cache/exists
+!data/tmp/exists
+/public/api/*
+library/Zend/

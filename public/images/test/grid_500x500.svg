@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+     id="Layer_1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:aino="http://luxus.fi/aino/svg"
+     x="0px"
+     y="0px"
+	 width="500px"
+     height="500px"
+     viewBox="0 0 500 500">
+<rect id="element_0" x="0" y="0" fill="#999999" width="250" height="250"/>
+<rect x="250" y="250" fill="#999999" width="250" height="250"/>
+<rect data-dojo-type="luxus.svg.Rect"
+      data-dojo-props="movable:true"
+      x="250"
+      y="0"
+      fill="#FFFFFF"
+      width="250"
+      height="250"/>
+<metadata>
+    <aino:config>
+        <aino:element>
+            <aino:elementid><![CDATA[element_0]]></aino:elementid>
+            <aino:property><![CDATA[y]]></aino:property>
+            <aino:label lang="en-US"><![CDATA[Property Name]]></aino:label>
+            <aino:label lang="fi-FI"><![CDATA[Ominaisuus]]></aino:label>
+            <aino:default><![CDATA[0]]></aino:default>
+            <aino:type><![CDATA[number]]></aino:type>
+        </aino:element>
+        <aino:element>
+            <aino:elementid><![CDATA[element_0]]></aino:elementid>
+            <aino:property><![CDATA[x]]></aino:property>
+            <aino:label lang="en-US"><![CDATA[Property Name]]></aino:label>
+            <aino:label lang="fi-FI"><![CDATA[Ominaisuus]]></aino:label>
+            <aino:default><![CDATA[0]]></aino:default>
+            <aino:type><![CDATA[number]]></aino:type>
+        </aino:element>
+    </aino:config>
+</metadata>
+</svg>

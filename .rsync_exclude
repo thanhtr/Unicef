@@ -1,0 +1,10 @@
+.git/
+.doc/
+doc/*
+/data/*
+nbproject/
+release.sh
+tests
+/public/.htaccess
+/public/api/*
+.DS_Store
